@@ -36,3 +36,7 @@ var twoSum2 = function(nums, target) {
         loop++;
     }
 }
+
+const nums = [2, 7, 11, 15], target = 9
+
+console.log(twoSum1(nums, target))
