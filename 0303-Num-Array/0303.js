@@ -46,7 +46,7 @@ var NumArray = function(nums) {
  * @return {number}
  */
 NumArray.prototype.sumRange = function(i, j) {
-  return this.sums[j  + 1] - this.sums[i];
+  return this.sums[j + 1] - this.sums[i];
 };
 
 /**
