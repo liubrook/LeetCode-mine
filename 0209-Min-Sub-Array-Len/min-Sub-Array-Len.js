@@ -14,16 +14,16 @@
 
 // 如果你已经完成了 O(n) 时间复杂度的解法, 请尝试 O(n log n) 时间复杂度的解法。
 var minSubArrayLen = function(s, nums) {
-    let minLe = Infinity;
-    let l = 0, r = 0, sum = 0;
-    while (l < nums.length) {
-        sum += nums[l];
+    let minLe = Number.MAX_SAFE_INTEGER;
+    let left = 0, right = 0, sum = 0;
+    while (right < nums.length) {
+        sum += nums[right];
         while(sum >= s) {
-            minLe = Math.min(minLe, l-r+1);
-            sum -= nums[r];
-            r++
+            minLe = Math.min(minLe, right-left+1);
+            sum -= nums[left];
+            left++
         }
-        l++;
+        right++;
     }
-    return minLe == Infinity ? 0 : minLe;
+    return minLe == Number.MAX_SAFE_INTEGER ? 0 : minLe;
 }
