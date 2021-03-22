@@ -11,7 +11,7 @@
 
 
 // 1
-var twoSum1 = function(nums, target) {
+var twoSum1 = function (nums, target) {
     let temp = [];
     for (let i = 0; i < nums.length; i++) {
         let dif = target - nums[i];
@@ -23,11 +23,11 @@ var twoSum1 = function(nums, target) {
 }
 
 // 2
-var twoSum2 = function(nums, target) {
+var twoSum2 = function (nums, target) {
     let map = {}; // key数字 value下标
     let loop = 0; // 循环次数
     let dis; // 目标与当前值的差
-    while(loop < nums.length) {
+    while (loop < nums.length) {
         dis = target - nums[loop];
         if (map[dis] != undefined) {
             return [map[dis], loop]
@@ -40,3 +40,18 @@ var twoSum2 = function(nums, target) {
 const nums = [2, 7, 11, 15], target = 9
 
 console.log(twoSum1(nums, target))
+
+
+var twoSum3 = function (nums, target) {
+    const prevNums = {};
+    for (let i = 0; i < nums.length; i++) {
+        const curNum = nums[i];
+        const targetNum = target - curNum;
+        const targetNumIndex = prevNums[targetNum];
+        if (targetNumIndex !== undefined && targetNumIndex !== i) {
+            return [targetNumIndex, i];
+        } else {
+            prevNums[curNum] = i;
+        }
+    }
+}

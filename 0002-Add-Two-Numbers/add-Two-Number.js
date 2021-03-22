@@ -11,12 +11,12 @@
 //输出：7 -> 0 -> 8
 //原因：342 + 465 = 807
 
-var addTwoNumbers1 = function(l1, l2) {
+var addTwoNumbers1 = function (l1, l2) {
     let c = 0;
     let r = new ListNode();
     let p = r;
     let p1 = l1, p2 = l2;
-    while(p1 || p2 || c) {
+    while (p1 || p2 || c) {
         c += ((p1 && p1.val) || 0) + ((p2 && p2.val) || 0)
         let node = new ListNode(c % 10);
         p.next = node;
@@ -28,7 +28,7 @@ var addTwoNumbers1 = function(l1, l2) {
     return r.next
 }
 
-var addTwoNumbers2 = function(l1, l2) {
+var addTwoNumbers2 = function (l1, l2) {
     let node = new ListNode('head');
     let temp = node; // 哑节点
     let add = 0; // 是否进1
@@ -45,4 +45,31 @@ var addTwoNumbers2 = function(l1, l2) {
     }
     add && (temp.next = new ListNode(add));
     return node.next
+}
+
+var addTwoNumbers = function (l1, l2) {
+    let head = null, tail = null;
+    let carry = 0;
+    while (l1 || l2) {
+        const n1 = l1 ? l1.val : 0;
+        const n2 = l2 ? l2.val : 0;
+        const sum = n1 + n2 + carry;
+        if (!head) {
+            head = tail = new ListNode(sum % 10);
+        } else {
+            tail.next = new ListNode(sum % 10);
+            tail = tail.next;
+        }
+        carry = Math.floor(sum / 10);
+        if (l1) {
+            l1 = l1.next;
+        }
+        if (l2) {
+            l2 = l2.next;
+        }
+    }
+    if (carry > 0) {
+        tail.next = new ListNode(carry);
+    }
+    return head;
 }
