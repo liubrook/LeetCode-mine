@@ -3,7 +3,7 @@
 
 // 调用 next() 将返回二叉搜索树中的下一个最小的数。
 
- 
+
 
 // 示例：
 
@@ -19,7 +19,7 @@
 // iterator.hasNext(); // 返回 true
 // iterator.next();    // 返回 20
 // iterator.hasNext(); // 返回 false
- 
+
 
 // 提示：
 
@@ -37,7 +37,7 @@
 /**
  * @param {TreeNode} root
  */
-var BSTIterator = function(root) {
+var BSTIterator = function (root) {
     this.stack = [];
     let p = root;
     while (p) {
@@ -51,7 +51,7 @@ var BSTIterator = function(root) {
  * @return {number}
  */
 
- BSTIterator.prototype.next = function() {
+BSTIterator.prototype.next = function () {
     let cur = this.stack.pop();
     let p = cur.right;
     while (p) {
@@ -59,20 +59,20 @@ var BSTIterator = function(root) {
         p = p.left
     }
     return cur.val;
- }
+}
 
- /**
- * @return whether we have a next smallest number
- * @return {boolean}
- */
+/**
+* @return whether we have a next smallest number
+* @return {boolean}
+*/
 
- BSTIterator.prototype.hasNext = function() {
+BSTIterator.prototype.hasNext = function () {
     return this.stack.length > 0;
- }
+}
 
- /**
- * Your BSTIterator object will be instantiated and called as such:
- * var obj = new BSTIterator(root)
- * var param_1 = obj.next()
- * var param_2 = obj.hasNext()
- */
+/**
+* Your BSTIterator object will be instantiated and called as such:
+* var obj = new BSTIterator(root)
+* var param_1 = obj.next()
+* var param_2 = obj.hasNext()
+*/
