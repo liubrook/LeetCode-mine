@@ -3,9 +3,93 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/1299-Replace-Elements" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/1603-Parking-System" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0007-Reverse-Integer" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0011-Max-Area" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0012-Int-To-Roman" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0013-Roman-ToInt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0026-Remove-Duplicates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0027-Remove-Element" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0028-Str-Str" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0059-Generate-Matrix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0061-Rotate-Right" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0073-Set-Zeroes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0074-Search-Matrix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0080-Remove-Duplicates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0081-Search" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0082-Delete-Duplicates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0083-Delete-Duplicates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0088-Merge" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0091-Number-Decodings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0092-Reverse-Between" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0115-Num-Dustinct" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0132-Min-Cut" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0137-Single-Number" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0150-Eval-RPN" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0153-Find-Min" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0154-Find-Min-II" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0160-Get-Intersection-Node" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0173-Binary-Search-Tree-Iterator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0179-Largest-Number" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0190-Reverse-Bits" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0191-Hamming-Weight" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0208-Trie" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0213-Rob-II" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0224-Calculate" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0227-Calculate" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0232-My-Queue" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0263-IsUgly" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0264-NthUgly-Number" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0303-Num-Array" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0304-Num-Matrix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0337-Combination-Sum4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0338-Count-Bits" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0341-Nested-Iterator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0354-Max-Envelopes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0395-Longest-Substring" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0403-Can-Cross" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0421-Find-Maximum-XOR" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0456-Find-132-Pattern" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0461-Hamming-Distance" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0477-Total-Hamming-Distance" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0523-Check-Sub-Array-Sum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0525-Find-Max-Length" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0554-Least-Bricks" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0633-Judge-Square-Sum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0664-Strange-Printer" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0690-Get-Importance" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0692-Top-K-Frequent" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0740-Delete-And-Earn" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0781-Num-Rabbits" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0783-Min-Diff-In-BST" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0810-Xor-Game" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/0867-Transpose" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0872-Leaf-Similar" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0896-IsMonotonic" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0897-Increasing-BST" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0938-Range-Sum-BST" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0993-Is-Cousins" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1006-Clumsy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1011-Ship-With-In-Days" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1035-Max-Uncrossed-Lines" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1047-Remove-Duplicates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1143-Longest-Common-Subsequence" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1178-Find-Num-Of-Valid-Words" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1190-Reverse-Parentheses" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1200-Minimum-Abs-Difference" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1269-Num-Ways" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1299-Replace-Elements" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1310-Xor-Queries" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1442-Count-Triplets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1482-Min-Days" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1486-xor-Operation" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1603-Parking-System" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1707-Maximize-Xor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1720-Decode" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1734-Decode" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1738-Kth-Largest-Value" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1744-Can-Eat" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1787-Min-Changes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/面试题 17.21. 直方图的水量" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
