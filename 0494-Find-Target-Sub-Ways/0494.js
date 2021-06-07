@@ -42,7 +42,7 @@ var findTargetSubWays = function (nums, target) {
     sum += num;
   }
   const diff = sum - target;
-  if (diff < 0 || dif % 2 !== 0) {
+  if (diff < 0 || diff % 2 !== 0) {
     return 0;
   }
   const neg = Math.floor(diff / 2);
