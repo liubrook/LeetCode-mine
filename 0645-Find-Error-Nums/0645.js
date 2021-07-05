@@ -5,7 +5,7 @@
 
 // 请你找出重复出现的整数，再找到丢失的整数，将它们以数组的形式返回。
 
- 
+
 
 // 示例 1：
 
@@ -15,14 +15,14 @@
 
 // 输入：nums = [1,1]
 // 输出：[1,2]
- 
+
 
 // 提示：
 
 // 2 <= nums.length <= 104
 // 1 <= nums[i] <= 104
 
-var findErrorNums = function(nums) {
+var findErrorNums = function (nums) {
   let n = nums.length;
   let sum = (n + 1) * n / 2;
   let double = 0;
