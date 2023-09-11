@@ -52,7 +52,7 @@ var scheduleCourse = function (courses) {
   return pq.size
 };
 
-class PriorityQueue {
+class PriorityQueue1 {
   constructor(
     compare = (a, b) => a > b
   ) {
