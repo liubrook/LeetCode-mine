@@ -32,9 +32,9 @@
 
 // 1 <= left < right <= 109
 // 在单个测试用例中，对 addRange 、  queryRange 和 removeRange 的调用总数不超过 104 次
-
+const MAX_RANGE = 1e9 + 7;
 var RangeModule = function () {
-
+  this.st = new SegmentTree();
 };
 
 /** 
@@ -43,7 +43,7 @@ var RangeModule = function () {
  * @return {void}
  */
 RangeModule.prototype.addRange = function (left, right) {
-
+  this.st.update(this.st.root, 1, MAX_RANGE, left, right - 1, true);
 };
 
 /** 
@@ -52,7 +52,7 @@ RangeModule.prototype.addRange = function (left, right) {
  * @return {boolean}
  */
 RangeModule.prototype.queryRange = function (left, right) {
-
+  return this.st.query(this.st.root, 1, MAX_RANGE, left, right - 1);
 };
 
 /** 
@@ -61,7 +61,7 @@ RangeModule.prototype.queryRange = function (left, right) {
  * @return {void}
  */
 RangeModule.prototype.removeRange = function (left, right) {
-
+  this.st.update(this.st.root, 1, MAX_RANGE, left, right - 1, false);
 };
 
 /**
@@ -71,3 +71,66 @@ RangeModule.prototype.removeRange = function (left, right) {
  * var param_2 = obj.queryRange(left,right)
  * obj.removeRange(left,right)
  */
+
+class SegNode {
+  constructor() {
+    this.ls = this.rs = null;
+    this.val = this.add = false;
+  }
+}
+
+class SegmentTree {
+  constructor() {
+    this.root = new SegNode();
+  }
+  update(node, lc, rc, l, r, v) {
+    if (l <= lc && rc <= r) {
+      node.val = v
+      node.add = true
+      return
+    }
+    this.pushdown(node)
+    const mid = lc + rc >> 1
+    if (l <= mid) {
+      this.update(node.ls, lc, mid, l, r, v)
+    }
+    if (r > mid) {
+      this.update(node.rs, mid + 1, rc, l, r, v)
+    }
+    this.pushup(node)
+  }
+  query(node, lc, rc, l, r) {
+    if (l <= lc && rc <= r) {
+      return node.val
+    }
+    this.pushdown(node)
+    let ans = true
+    const mid = lc + rc >> 1
+    if (l <= mid) {
+      ans = ans && this.query(node.ls, lc, mid, l, r)
+    }
+    if (r > mid) {
+      ans = ans && this.query(node.rs, mid + 1, rc, l, r)
+    }
+    return ans
+  }
+
+  pushup(node) {
+    node.val = node.ls.val && node.rs.val
+  }
+
+  pushdown(node) {
+    if (node.ls == null) {
+      node.ls = new SegNode()
+    }
+    if (node.rs == null) {
+      node.rs = new SegNode()
+    }
+    if (!node.add) {
+      return
+    }
+    node.ls.add = node.rs.add = true
+    node.ls.val = node.rs.val = node.val
+    node.add = false
+  }
+}
