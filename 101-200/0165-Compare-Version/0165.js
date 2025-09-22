@@ -53,7 +53,7 @@
 var compareVersion = function (version1, version2) {
   const v1 = version1.split('.');
   const v2 = version2.split('.');
-  for (let i = 0; o < v1.length || i < v2.length; ++i) {
+  for (let i = 0; i < v1.length || i < v2.length; ++i) {
     let x = 0, y = 0;
     if (i < v1.length) {
       x = parseInt(v1[i]);
