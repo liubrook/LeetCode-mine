@@ -3,8 +3,6 @@
 
 // 请返回层内元素之和 最大 的那几层（可能只有一层）的层号，并返回其中 最小 的那个。
 
-
-
 // 示例 1：
 
 // https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/08/17/capture.jpeg
@@ -20,7 +18,6 @@
 
 // 输入：root = [989, null, 10250, 98693, -89388, null, null, null, -32127]
 // 输出：2
-
 
 // 提示：
 
@@ -39,8 +36,10 @@
  * @param {TreeNode} root
  * @return {number}
  */
+// 广度优先搜索
 var maxLevelSum = function (root) {
-  let ans = 1, maxSum = root.val;
+  let ans = 1,
+    maxSum = root.val;
   let q = [];
   q.push(root);
   for (let level = 1; q.length > 0; ++level) {
@@ -62,4 +61,29 @@ var maxLevelSum = function (root) {
     q = nq;
   }
   return ans;
+};
+// 深度优先搜索
+var maxLevelSum = function (root) {
+  const sum = [];
+  const dfs = (node, level) => {
+    if (level === sum.length) {
+      sum.push(node.val);
+    } else {
+      sum.splice(level, 1, sum[level] + node.val);
+    }
+    if (node.left) {
+      dfs(node.left, level + 1);
+    }
+    if (node.right) {
+      dfs(node.right, level + 1);
+    }
+  };
+  dfs(root, 0);
+  let ans = 0;
+  for (let i = 0; i < sum.length; ++i) {
+    if (sum[i] > sum[ans]) {
+      ans = i;
+    }
+  }
+  return ans + 1;
 };
