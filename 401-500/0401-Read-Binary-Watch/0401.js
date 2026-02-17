@@ -15,7 +15,6 @@
 
 // 例如，"10:2" 是无效的时间，正确的写法应该是 "10:02" 。
 
-
 // 示例 1：
 
 // 输入：turnedOn = 1
@@ -24,7 +23,6 @@
 
 // 输入：turnedOn = 9
 // 输出：[]
-
 
 // 解释：
 
@@ -38,10 +36,30 @@ var readBinaryWatch = function (turnedOn) {
   const ans = [];
   for (let h = 0; h < 12; ++h) {
     for (let m = 0; m < 60; ++m) {
-      if (h.toString(2).split('0').join('').length + m.toString(2).split('0').join('').length === turnedOn) {
-        ans.push(h + ':' + (m < 10 ? "0" : "") + m);
+      if (
+        h.toString(2).split("0").join("").length +
+          m.toString(2).split("0").join("").length ===
+        turnedOn
+      ) {
+        ans.push(h + ":" + (m < 10 ? "0" : "") + m);
       }
     }
   }
   return ans;
-}
+};
+
+var readBinaryWatch = function (turnedOn) {
+  const ans = [];
+  for (let i = 0; i < 1024; ++i) {
+    let h = i >> 6,
+      m = i & 63; // 用位运算取出高 4 位和低 6 位
+    if (
+      h < 12 &&
+      m < 60 &&
+      i.toString(2).split("0").join("").length === turnedOn
+    ) {
+      ans.push(h + ":" + (m < 10 ? "0" : "") + m);
+    }
+  }
+  return ans;
+};
