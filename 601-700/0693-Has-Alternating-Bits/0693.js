@@ -1,8 +1,6 @@
 // 693. 交替位二进制数
 // 给定一个正整数，检查它的二进制表示是否总是 0、1 交替出现：换句话说，就是二进制表示中相邻两位的数字永不相同。
 
- 
-
 // 示例 1：
 
 // 输入：n = 5
@@ -27,23 +25,27 @@
 
 // 输入：n = 3
 // 输出：false
- 
 
 // 提示：
 
 // 1 <= n <= 231 - 1
 
 var hasAlternatingBits = function (n) {
-  const s = n.toString(2)
-  for(let i = 0; i < s.length; i++) {
+  const s = n.toString(2);
+  for (let i = 0; i < s.length; i++) {
     if (s[i] == s[i + 1]) {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
 var hasAlternatingBits = function (n) {
-  let binary = n.toString(2)
-  return !(binary.indexOf('11') > -1 || binary.indexOf('00') > -1)
-}
+  let binary = n.toString(2);
+  return !(binary.indexOf("11") > -1 || binary.indexOf("00") > -1);
+};
+
+var hasAlternatingBits = function (n) {
+  const a = n ^ (n >> 1);
+  return (a & (a + 1)) === 0;
+};
