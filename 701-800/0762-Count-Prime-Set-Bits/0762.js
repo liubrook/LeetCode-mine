@@ -5,7 +5,6 @@
 
 // 例如， 21 的二进制表示 10101 有 3 个计算置位。
 
-
 // 示例 1：
 
 // 输入：left = 6, right = 10
@@ -29,12 +28,10 @@
 // 15 -> 1111(4 个计算置位, 4 不是质数)
 // 共计 5 个计算置位为质数的数字。
 
-
 // 提示：
 
 // 1 <= left <= right <= 106
 // 0 <= right - left <= 104
-
 
 /**
  * @param {number} left
@@ -61,8 +58,25 @@ const isPrime = (x) => {
     }
   }
   return true;
-}
+};
 
 const bitCount = (x) => {
-  return x.toString(2).split('0').join('').length;
-}
+  return x.toString(2).split("0").join("").length;
+};
+
+/**
+ * 判断质数优化
+ */
+var countPrimeSetBits = function (left, right) {
+  let ans = 0;
+  for (let x = left; x <= right; ++x) {
+    if (((1 << bitCount(x)) & 665772) != 0) {
+      ++ans;
+    }
+  }
+  return ans;
+};
+
+const bitCount = (x) => {
+  return x.toString(2).split("0").join("").length;
+};
