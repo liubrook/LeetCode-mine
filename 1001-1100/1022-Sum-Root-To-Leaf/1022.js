@@ -6,8 +6,6 @@
 
 // 返回这些数字之和。题目数据保证答案是一个 32 位 整数。
 
-
-
 // 示例 1：
 
 // https://assets.leetcode.com/uploads/2019/04/04/sum-of-root-to-leaf-binary-numbers.png
@@ -19,12 +17,10 @@
 // 输入：root = [0]
 // 输出：0
 
-
 // 提示：
 
 // 树中的节点数在[1, 1000] 范围内
-// Node.val 仅为 0 或 1 
-
+// Node.val 仅为 0 或 1
 
 /**
  * Definition for a binary tree node.
@@ -48,6 +44,33 @@ var sumRootToLeaf = function (root) {
       return val;
     }
     return dfs(root.left, val) + dfs(root.right, val);
-  }
+  };
   return dfs(root, 0);
+};
+
+var sumRootToLeaf = function (root) {
+  const stack = [];
+  let val = 0,
+    ret = 0;
+  let prev = null;
+  while (root || stack.length) {
+    while (root) {
+      val = (val << 1) | root.val;
+      stack.push(root);
+      root = root.left;
+    }
+    root = stack[stack.length - 1];
+    if (!root.right || root.right === prev) {
+      if (!root.left && !root.right) {
+        ret += val;
+      }
+      val >>= 1;
+      stack.pop();
+      prev = root;
+      root = null;
+    } else {
+      root = root.right;
+    }
+  }
+  return ret;
 };
