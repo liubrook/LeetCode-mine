@@ -3,8 +3,6 @@
 
 // 特殊位置 定义：如果 mat[i][j] == 1 并且第 i 行和第 j 列中的所有其他元素均为 0（行和列的下标均 从 0 开始 ），则位置(i, j) 被称为特殊位置。
 
-
-
 // 示例 1：
 
 // 输入：mat = [[1, 0, 0],
@@ -35,7 +33,6 @@
 // [0, 0, 0, 1, 1]]
 // 输出：3
 
-
 // 提示：
 
 // rows == mat.length
@@ -48,7 +45,8 @@
  * @return {number}
  */
 var numSpecial = function (mat) {
-  const m = mat.length, n = mat[0].length;
+  const m = mat.length,
+    n = mat[0].length;
   const rowsSum = new Array(m).fill(0);
   const colsSum = new Array(n).fill(0);
   for (let i = 0; i < m; i++) {
@@ -66,4 +64,34 @@ var numSpecial = function (mat) {
     }
   }
   return res;
+};
+
+var numSpecial = function (mat) {
+  const m = mat.length,
+    n = mat[0].length;
+  for (let i = 0; i < m; i++) {
+    let cnt1 = 0;
+    for (let j = 0; j < n; j++) {
+      if (mat[i][j] === 1) {
+        cnt1++;
+      }
+    }
+    if (i === 0) {
+      cnt1--;
+    }
+    if (cnt1 > 0) {
+      for (let j = 0; j < n; j++) {
+        if (mat[i][j] === 1) {
+          mat[0][j] += cnt1;
+        }
+      }
+    }
+  }
+  let sum = 0;
+  for (const num of mat[0]) {
+    if (num === 1) {
+      sum++;
+    }
+  }
+  return sum;
 };
