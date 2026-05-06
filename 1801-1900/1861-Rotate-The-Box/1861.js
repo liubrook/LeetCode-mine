@@ -76,7 +76,7 @@ var rotateTheBox = function (boxGrid) {
       if (j === n - 1 || row[j + 1] === "*") {
         // 下一个格子是障碍物
         // 石头垂直掉落后, 从 j 往前 cnt 个格子都是石头
-        for (let k = j; j < j - cnt; k--) {
+        for (let k = j; k > j - cnt; k--) {
           ans[k][m - 1 - i] = "#";
         }
         cnt = 0; // 重置计数器
