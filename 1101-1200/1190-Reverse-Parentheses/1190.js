@@ -5,8 +5,6 @@
 
 // 注意，您的结果中 不应 包含任何括号。
 
-
-
 // 示例 1：
 
 // 输入：s = "(abcd)"
@@ -24,21 +22,20 @@
 // 输入：s = "a(bcdefghijkl(mno)p)q"
 // 输出："apmnolkjihgfedcbq"
 
-
 // 提示：
 
 // 0 <= s.length <= 2000
 // s 中只有小写英文字母和括号
 // 我们确保所有括号都是成对出现的
-
+// 栈
 var reverseParentheses = function (s) {
   const stk = [];
-  let str = '';
+  let str = "";
   for (const ch of s) {
-    if (ch === '(') {
+    if (ch === "(") {
       stk.push(str);
-      str = '';
-    } else if (ch === ')') {
+      str = "";
+    } else if (ch === ")") {
       str = str.split("").reverse().join("");
       str = stk[stk.length - 1] + str;
       stk.pop();
@@ -47,4 +44,33 @@ var reverseParentheses = function (s) {
     }
   }
   return str;
-}
+};
+// 预处理括号
+var reverseParentheses = function (s) {
+  const n = s.length;
+  const pair = new Array(n).fill(0);
+  const stack = [];
+  for (let i = 0; i < n; i++) {
+    if (s[i] === "(") {
+      stack.push(i);
+    } else if (s[i] == ")") {
+      const j = stack.pop();
+      pair[i] = j;
+      pair[j] = i;
+    }
+  }
+
+  const sb = [];
+  let index = 0,
+    step = 1;
+  while (index < n) {
+    if (s[index] === "(" || s[index] === ")") {
+      index = pair[index];
+      step = -step;
+    } else {
+      sb.push(s[index]);
+    }
+    index += step;
+  }
+  return sb.join("");
+};
