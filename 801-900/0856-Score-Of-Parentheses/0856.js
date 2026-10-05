@@ -5,7 +5,6 @@
 // AB 得 A + B 分，其中 A 和 B 是平衡括号字符串。
 // (A) 得 2 * A 分，其中 A 是平衡括号字符串。
 
-
 // 示例 1：
 
 // 输入： "()"
@@ -23,12 +22,10 @@
 // 输入： "(()(()))"
 // 输出： 6
 
-
 // 提示：
 
 // S 是平衡括号字符串，且只含有(和) 。
 // 2 <= S.length <= 50
-
 
 /**
  * @param {string} s
@@ -37,7 +34,7 @@
 var scoreOfParentheses = function (s) {
   const st = [0];
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === '(') {
+    if (s[i] === "(") {
       st.push(0);
     } else {
       let v = st.pop();
@@ -46,4 +43,18 @@ var scoreOfParentheses = function (s) {
     }
   }
   return st[0];
+};
+
+// 计算最终分数和
+var scoreOfParentheses = function (s) {
+  let bal = 0,
+    n = s.length,
+    res = 0;
+  for (let i = 0; i < n; i++) {
+    bal += s[i] == "(" ? 1 : -1;
+    if (s[i] == ")" && s[i - 1] === "(") {
+      res += 1 << bal;
+    }
+  }
+  return res;
 };
