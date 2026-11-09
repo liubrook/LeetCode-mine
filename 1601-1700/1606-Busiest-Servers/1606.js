@@ -9,8 +9,6 @@
 
 // 请你返回包含所有 最繁忙服务器 序号的列表，你可以以任意顺序返回这个列表。
 
-
-
 // 示例 1：
 
 // https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/10/03/load-1.png
@@ -45,7 +43,6 @@
 // 输入：k = 1, arrival = [1], load = [1]
 // 输出：[0]
 
-
 // 提示：
 
 // 1 <= k <= 105
@@ -61,89 +58,111 @@
  * @return {number[]}
  */
 var busiestServers = function (k, arrival, load) {
-  const r = new Uint32Array(k), n = arrival.length
-  const freeTime = new MinPriorityQueue(), freeNo = new MinPriorityQueue()
-  for (let i = 0; i < k; i++) freeNo.enqueue(i, i) // 服务器都空闲，放序号 + 优先级
-  for (let i = 0; i < n; i++) {
-    const time = arrival[i], duration = load[i] // ↓ 当前有没有服务器 → 空闲
-    while (!freeTime.isEmpty() && freeTime.front().priority <= time) {
-      const server = freeTime.dequeue().element // 已经空闲的服务器序号（从小到大弹出）
-      freeNo.enqueue( // 已经空闲的服务器序号放入序号优先队列
-        server,
-        ((server - i) % k + k) % k + i // 排序值，确保从 i%k 开始，找一圈
-      )
-    }
-    if (freeNo.isEmpty()) continue // 没有空闲的服务器
-    const server = freeNo.dequeue().element % k // 排序值最小是一圈中最接近 i%k 的
-    freeTime.enqueue(
-      server,
-      time + duration // 延长服务器的空闲时间，作为优先级
-    )
-    r[server]++
-  }
-  let ans = [], max = 0
+  const available = new MinPriorityQueue();
   for (let i = 0; i < k; i++) {
-    if (r[i] > max) ans = [i], max = r[i]
-    else if (r[i] === max) ans.push(i)
+    available.enqueue(i);
   }
-  return ans
+
+  const busy = new MinPriorityQueue({
+    compare: (a, b) => {
+      if (a[0] !== b[0]) return a[0] - b[0];
+      return a[1] - b[1];
+    },
+  });
+
+  const requests = new Array(k).fill(0);
+
+  for (let i = 0; i < arrival.length; i++) {
+    while (!busy.isEmpty() && busy.front()[0] <= arrival[i]) {
+      const [, id] = busy.dequeue();
+      const pos = i + ((((id - i) % k) + k) % k);
+      available.enqueue(pos);
+    }
+
+    if (available.isEmpty()) {
+      continue;
+    }
+
+    const pos = available.dequeue();
+    const serverId = pos % k;
+    requests[serverId]++;
+    busy.enqueue([arrival[i] + load[i], serverId]);
+  }
+
+  const maxRequest = Math.max(...requests);
+  const result = [];
+  for (let i = 0; i < k; i++) {
+    if (requests[i] === maxRequest) {
+      result.push(i);
+    }
+  }
+  return result;
 };
 
 // leetCode内置该class
 class MinPriorityQueue {
   constructor() {
-    this.heap = []
+    this.heap = [];
   }
   swap(i, j) {
-    const tmp = this.heap[i]
-    this.heap[i] = this.heap[j]
-    this.heap[j] = tmp
+    const tmp = this.heap[i];
+    this.heap[i] = this.heap[j];
+    this.heap[j] = tmp;
   }
   getParentIndex(index) {
-    return index - 1 >> 1
+    return (index - 1) >> 1;
   }
   shiftUp(index) {
-    const parentIndex = this.getParentIndex(index)
-    if (this.heap[parentIndex] && this.heap[parentIndex].priority > this.heap[index].priority) {
-      this.swap(parentIndex, index)
-      this.shiftUp(parentIndex)
+    const parentIndex = this.getParentIndex(index);
+    if (
+      this.heap[parentIndex] &&
+      this.heap[parentIndex].priority > this.heap[index].priority
+    ) {
+      this.swap(parentIndex, index);
+      this.shiftUp(parentIndex);
     }
   }
   getLeftIndex(index) {
-    return (index << 1) + 1
+    return (index << 1) + 1;
   }
   getRightIndex(index) {
-    return (index << 1) + 2
+    return (index << 1) + 2;
   }
   shiftDown(index) {
-    const leftIndex = this.getLeftIndex(index)
-    const rightIndex = this.getRightIndex(index)
-    if (this.heap[leftIndex] && this.heap[leftIndex].priority < this.heap[index].priority) {
-      this.swap(leftIndex, index)
-      this.shiftDown(leftIndex)
+    const leftIndex = this.getLeftIndex(index);
+    const rightIndex = this.getRightIndex(index);
+    if (
+      this.heap[leftIndex] &&
+      this.heap[leftIndex].priority < this.heap[index].priority
+    ) {
+      this.swap(leftIndex, index);
+      this.shiftDown(leftIndex);
     }
-    if (this.heap[rightIndex] && this.heap[rightIndex].priority < this.heap[index].priority) {
-      this.swap(rightIndex, index)
-      this.shiftDown(rightIndex)
+    if (
+      this.heap[rightIndex] &&
+      this.heap[rightIndex].priority < this.heap[index].priority
+    ) {
+      this.swap(rightIndex, index);
+      this.shiftDown(rightIndex);
     }
   }
   enqueue(element, priority) {
-    this.heap.push({ element, priority })
-    this.shiftUp(this.heap.length - 1)
+    this.heap.push({ element, priority });
+    this.shiftUp(this.heap.length - 1);
   }
   front() {
-    return this.heap[0]
+    return this.heap[0];
   }
   dequeue() {
-    const tmp = this.heap[0]
-    if (this.heap.length === 1) this.heap.pop()
+    const tmp = this.heap[0];
+    if (this.heap.length === 1) this.heap.pop();
     else {
-      this.heap[0] = this.heap.pop()
-      this.shiftDown(0)
+      this.heap[0] = this.heap.pop();
+      this.shiftDown(0);
     }
-    return tmp
+    return tmp;
   }
   isEmpty() {
-    return this.heap.length === 0
+    return this.heap.length === 0;
   }
 }
